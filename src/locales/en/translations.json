@@ -1,0 +1,16 @@
+{
+  "Auth": {
+    "login": "Login",
+    "signup": "Sign up",
+    "welcome-back": "Welcome back",
+    "email": "Email",
+    "password": "Password",
+    "confirm-password": "Confirm Password",
+    "create-account-title": "Create a new account",
+    "create-account": "Create account",
+    "congratulations": "Congratulations",
+    "account-ready": "You're all setup"
+  },
+  "Dashboard": {},
+  "More": {}
+}
