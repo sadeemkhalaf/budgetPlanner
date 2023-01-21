@@ -1,4 +1,3 @@
-// src/localization/i18n.ts
 import i18next from 'i18next';
 import {initReactI18next} from 'react-i18next';
 import {reduxStore} from '../store/storeConfigs';
@@ -18,8 +17,8 @@ export const resources = {
 i18next.use(initReactI18next).init({
   compatibilityJSON: 'v3',
   resources,
-  lng: reduxStore.getState().User.langType,
-  fallbackLng: reduxStore.getState().User.langType,
+  lng: reduxStore.getState().App.langType,
+  fallbackLng: reduxStore.getState().App.langType,
   load: 'all',
   interpolation: {
     escapeValue: false,

@@ -3,11 +3,11 @@ import {UserActionsType} from '../types/redux.enums';
 import {IinitialStateUser} from '../types/redux.types';
 
 const initialState: IinitialStateUser = {
-  userDetails: {},
   token: '',
+  userDetails: {},
 };
 
-const appReducer = (
+const userReducer = (
   State: IinitialStateUser = initialState,
   action: UserAction,
 ) => {
@@ -20,11 +20,11 @@ const appReducer = (
     case UserActionsType.USER_DETAILS:
       return {
         ...State,
-        ...action.payload,
+        userDetails: {...action.payload},
       };
     default:
       return State;
   }
 };
 
-export default appReducer;
+export default userReducer;

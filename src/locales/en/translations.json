@@ -9,8 +9,32 @@
     "create-account-title": "Create a new account",
     "create-account": "Create account",
     "congratulations": "Congratulations",
-    "account-ready": "You're all setup"
+    "account-ready": "You're all setup",
+    "fullname": "Full Name",
+    "mobile": "Mobile Number",
+    "start": "Start"
   },
-  "Dashboard": {},
-  "More": {}
+  "Dashboard": {
+    "dashboard": "Dashboard",
+    "more": "More",
+    "expenses": "Expenses",
+    "jod": "{{amount}} JOD"
+  },
+  "More": {},
+  "Errors": {},
+  "ExpensesTypes": {
+    "shopping": "Shopping",
+    "groceries": "Groceries",
+    "utilities": "Utilitis",
+    "medical": "Medical",
+    "donations": "Donations",
+    "transportations": "Transportations",
+    "rent": "Rent",
+    "subscriptions": "Subscriptions",
+    "credit-card": "Credit card",
+    "vacation": "Vacation",
+    "personal-care": "Personal care",
+    "outing": "Outing",
+    "other": "Other"
+  }
 }

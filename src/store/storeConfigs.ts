@@ -3,7 +3,7 @@ import {persistStore, persistReducer} from 'redux-persist';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
 import {RootReducer} from './rootReducer';
-import {IinitialStateUser} from './types/redux.types';
+import {IinitialStateApp, IinitialStateUser} from './types/redux.types';
 
 declare global {
   interface Window {
@@ -29,7 +29,7 @@ type rootState = ReturnType<typeof RootReducer>;
 const persistedReducer = persistReducer<rootState>(
   persistConfig,
   RootReducer as Reducer<
-    CombinedState<{App: IinitialStateUser; User: IinitialStateUser}>,
+    CombinedState<{App: IinitialStateApp; User: IinitialStateUser}>,
     Action<any>
   >,
 );

@@ -1,16 +1,40 @@
 {
   "Auth": {
-    "login": "Login",
-    "signup": "Sign up",
-    "welcome-back": "Welcome back",
-    "email": "Email",
-    "password": "Password",
-    "confirm-password": "Confirm Password",
-    "create-account-title": "Create a new account",
-    "create-account": "Create account",
-    "congratulations": "Congratulations",
-    "account-ready": "You're all setup"
+    "login": "دخول",
+    "signup": "حساب جديد",
+    "welcome-back": "أهلًا بعودتك",
+    "email": "البريد الالكتروني",
+    "password": "كلمة السر",
+    "confirm-password": "تأكيد كلمة السر",
+    "create-account-title": "قم بإنشاء حسابك",
+    "create-account": "أنشئ حسابك",
+    "congratulations": "مبروك",
+    "account-ready": "تم تجهيز حسابك!",
+    "fullname": "الاسم الكامل",
+    "mobile": "رقم الهاتف المحمول",
+    "start": "ابدأ"
   },
-  "Dashboard": {},
-  "More": {}
+  "Dashboard": {
+    "dashboard": "Dashboard",
+    "expenses": "المصروفات",
+    "more": "المزيد",
+    "jod": "{{amount}} د.أ"
+  },
+  "More": {},
+  "Errors": {},
+  "ExpensesTypes": {
+    "shopping": "shopping",
+    "groceries": "groceries",
+    "utilities": "utilities",
+    "medical": "medical",
+    "donations": "donations",
+    "transportations": "transportations",
+    "rent": "rent",
+    "subscriptions": "subscriptions",
+    "credit-card": "credit card",
+    "vacation": "vacation",
+    "personal-care": "personal care",
+    "outing": "outing",
+    "other": "other"
+  }
 }
