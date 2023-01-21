@@ -1,5 +1,6 @@
 import {StyleSheet, Dimensions} from 'react-native';
 import {Colors} from '../../theme/colors';
+import {scaleByHeight} from '../../utils/appUtils';
 
 export const styles = StyleSheet.create({
   splashImg: {
@@ -7,11 +8,9 @@ export const styles = StyleSheet.create({
     height: '100%',
   },
   splashIcon: {
-    width: Dimensions.get('screen').width / 2,
-    height: Dimensions.get('screen').width / 2,
+    height: scaleByHeight(90),
+    width: Dimensions.get('screen').width / 1.75,
     zIndex: 1000,
-    backgroundColor: Colors.primary,
-    borderRadius: Dimensions.get('screen').width / 2,
   },
   container: {
     flex: 1,
