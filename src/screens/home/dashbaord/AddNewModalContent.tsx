@@ -5,10 +5,9 @@ import SelectDropdown from "react-native-select-dropdown";
 import Icon from "react-native-vector-icons/Feather";
 import { CustomText, Gap, CustomTextField, CustomButton } from "../../../components";
 import { arabicToEnglishNumbers, moderateScale } from "../../../utils/appUtils";
-import { ExpenseEnums } from "./expenseRow/expense.type";
-import { ExpenseDetails } from "./expensesList/expensesList.props";
 import { Colors } from "../../../theme/colors";
 import { commonStyles } from "../../../theme/commonStyles";
+import { ExpenseDetails, ExpenseEnums } from "../../../utils/types";
 
 export const AddNewModalContent: FC<{ onSubmitAddNew: (data: ExpenseDetails) => void }> = ({ onSubmitAddNew }) => {
     const [expenseType, setExpenseType] = useState<ExpenseEnums>(ExpenseEnums.OTHER);

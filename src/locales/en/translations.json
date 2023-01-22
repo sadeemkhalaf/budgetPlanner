@@ -18,6 +18,7 @@
     "dashboard": "Dashboard",
     "more": "More",
     "expenses": "Expenses",
+    "empty-list-state": "Empty List! Start adding new",
     "jod": "{{amount}} JOD",
     "search": "Search",
     "add-new": "Add New",

@@ -45,7 +45,6 @@ const AppStack = () => {
       {!token.length ? (
         <Stack.Screen name={AuthRoutesEnums.AuthStack} component={AuthStack} />
       ) : null}
-
       <Stack.Screen name={HomeRoutesEnums.Home} component={HomeStack} />
     </Stack.Navigator>
   );

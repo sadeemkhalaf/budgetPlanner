@@ -8,9 +8,9 @@ import { CustomText, CustomTextField, Gap } from '../../../../components'
 import { Colors } from '../../../../theme/colors'
 import { commonStyles } from '../../../../theme/commonStyles'
 import { ExpenseRow } from '../expenseRow/ExpenseRow'
-import { ExpenseDetails } from './expensesList.props'
 import { formatDateKeyByLang, moderateScale } from '../../../../utils/appUtils';
 import { IRootState } from '../../../../store/storeConfigs';
+import { ExpenseDetails } from '../../../../utils/types';
 import { styles } from '../styles';
 
 
@@ -86,6 +86,16 @@ export const ExpensesList: FC = () => {
             <FlatList
                 data={groupedActivitiesKeys}
                 showsVerticalScrollIndicator={false}
+                ListEmptyComponent={() =>
+                    <View style={[commonStyles.flex, commonStyles.column, commonStyles.alignItems]}>
+                        <Icon
+                            name={'meh'}
+                            size={moderateScale(40)}
+                            color={Colors.primary} />
+                        <Gap type={'col'} gapValue={16} />
+                        <CustomText style={[{ textAlign: 'center' }]} text={t('Dashboard.empty-list-state')!} />
+                    </View>
+                }
                 refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
                 renderItem={({ item }) => {
                     const totalSpendings = groupedActivities[item].reduce((accumulator: number, currentValue: ExpenseDetails) => accumulator + currentValue?.amount, 0);
@@ -93,7 +103,6 @@ export const ExpensesList: FC = () => {
                         <View style={[commonStyles.flex, commonStyles.row, commonStyles.spaceBetween]}>
                             <CustomText text={item} preset={'bold'} />
                             <CustomText
-                                // text={'6 JOD'}
                                 text={t('Dashboard.jod', { amount: totalSpendings })!}
                                 style={{ color: Colors.purple }} preset={'bold'} />
                         </View>

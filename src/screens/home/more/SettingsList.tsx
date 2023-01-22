@@ -12,7 +12,7 @@ import { Colors } from '../../../theme/colors'
 import { changeLangType } from '../../../store/actions/appActions';
 import { setToken, setUserDetails } from '../../../store/actions/userActions';
 import { IRootState } from '../../../store/storeConfigs';
-import { AuthRoutesEnums } from '../../../routes/route.enums';
+import { AuthRoutesEnums, HomeRoutesEnums } from '../../../routes/route.enums';
 import { commonStyles } from '../../../theme/commonStyles'
 import { styles } from './styles';
 
@@ -38,7 +38,7 @@ export const SettingsList: FC = () => {
             dispatch(setUserDetails({}));
             dispatch(setToken(''));
         }, 150);
-        navigate.dispatch(StackActions.replace(AuthRoutesEnums.AuthStack))
+        navigate.dispatch(StackActions.replace(HomeRoutesEnums.Home))
     }
 
     return (

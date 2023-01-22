@@ -17,6 +17,7 @@
   "Dashboard": {
     "dashboard": "الرئيسية",
     "expenses": "المصروفات",
+    "empty-list-state": "القائمة فارغة! ابدأ بالإضافة",
     "more": "المزيد",
     "jod": "{{amount}} د.أ",
     "search": "ابحث",
