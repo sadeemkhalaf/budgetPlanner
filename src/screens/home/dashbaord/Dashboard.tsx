@@ -1,62 +1,64 @@
-import React, { FC, useCallback, useState } from 'react';
-import { View } from 'react-native';
+import React, { FC, useEffect, useState } from 'react';
+import { TouchableOpacity, View } from 'react-native';
 import { t } from 'i18next';
 import Icon from 'react-native-vector-icons/Feather';
-import { CustomText, CustomTextField, Gap, Screen } from '../../../components';
-import { moderateScale, scaleByWidth } from '../../../utils/appUtils';
-import { Colors } from '../../../theme/colors';
+import { useForm } from 'react-hook-form';
+import { CustomPopupModal, CustomText, Gap, LogoHeader, Screen } from '../../../components';
+import { moderateScale, scaleByHeight, scaleByWidth } from '../../../utils/appUtils';
 import { ExpensesList } from './expensesList/ExpensesList';
-import { commonStyles } from '../../../theme/commonStyles';
-import { styles } from './styles';
 import { ExpenseDetails, testData } from './expensesList/expensesList.props';
+import { commonStyles } from '../../../theme/commonStyles';
+import { Colors } from '../../../theme/colors';
+import { ExpenseEnums } from './expenseRow/expense.type';
 
 const Dashboard: FC = () => {
-  const [searchTxt, setSearchTxt] = useState<string>('');
-  const [expensesList, setExpensesList] = useState<ExpenseDetails[]>(testData);
-  const [tempExpensesList, setTempExpensesList] = useState<ExpenseDetails[]>(testData);
+  const [expensesList, setExpensesList] = useState<ExpenseDetails[]>([]);
+  const [expensesModalVisible, setExpensesModalVisible] = useState<boolean>(false);
 
+  const { control, handleSubmit, formState: { errors }, getValues } = useForm<ExpenseDetails>({
+    defaultValues: {
+      amount: 0,
+      createdOn: new Date().toISOString(),
+      title: ExpenseEnums.OTHER
+    }
+  });
 
-  const filteredExpensesList = (text: string) => {
-    const filtered = expensesList!.filter((item: ExpenseDetails) => {
-      return item?.title.toLowerCase()?.includes(text?.toLowerCase());
-    });
+  const handleCreateNew = () => {}
 
-    setTempExpensesList(filtered);
+  const onSubmit = (data: ExpenseDetails) => {
+    handleCreateNew();
   };
 
-  const renderSearchInput = useCallback(() => {
-    return (
-      <CustomTextField
-        clearButtonMode={'while-editing'}
-        inputStyle={{ borderBottomWidth: 0 }}
-        style={[commonStyles.flex1, styles.searchbox]}
-        value={searchTxt}
-        onChangeText={(text: string) => {
-          setSearchTxt(text);
-          filteredExpensesList(text);
-        }} />
-    );
-  }, [searchTxt, filteredExpensesList]);
+
+  useEffect(() => {
+    setExpensesList(testData);
+  }, [])
 
   return (
     <Screen
       unsafe
-      preset={'scroll'}
+      preset={'fixed'}
       style={{ paddingHorizontal: scaleByWidth(30) }}
     >
       <Gap type={'col'} gapValue={64} />
-      <CustomText text={t('Dashboard.expenses')!} preset={'headerBold'} />
-      <Gap type={'col'} gapValue={16} />
-      <View style={[commonStyles.flex, commonStyles.row]}>
-        <Icon
-          name={'search'}
-          size={moderateScale(20)}
-          color={Colors.grey}
-          style={[styles.absoluteIcon]} />
-        {renderSearchInput()}
+      <LogoHeader />
+      <Gap type={'col'} gapValue={32} />
+      <View style={[commonStyles.flex, commonStyles.row, commonStyles.spaceBetween]}>
+        <CustomText text={t('Dashboard.expenses')!} preset={'headerBold'} />
+        <TouchableOpacity style={[commonStyles.flex, commonStyles.row]} onPress={() => setExpensesModalVisible(true)}>
+          <CustomText text={'New'} preset={'bold'} style={{ color: Colors.primary }} />
+          <Icon name={'plus'} color={Colors.primary} />
+        </TouchableOpacity>
       </View>
       <Gap type={'col'} gapValue={16} />
-      <ExpensesList expensesList={tempExpensesList} />
+      <ExpensesList expensesList={expensesList} />
+
+      {/* type selection */}
+      <CustomPopupModal height={scaleByHeight(340)} visible={expensesModalVisible} onModalClose={() => setExpensesModalVisible(false)}>
+        <View style={[commonStyles.flex, { padding: moderateScale(24) }]}>
+          <CustomText text={t('Dashboard.add-new')!} preset={'subheaderBold'} style={{ color: Colors.black }} />
+        </View>
+      </CustomPopupModal>
     </Screen>
   );
 };

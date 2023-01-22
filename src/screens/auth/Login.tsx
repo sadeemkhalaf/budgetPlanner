@@ -4,13 +4,13 @@ import { t } from 'i18next';
 import Icon from 'react-native-vector-icons/Feather';
 import { useNavigation } from '@react-navigation/native';
 import { useForm, Controller } from 'react-hook-form';
-import { CustomButton, CustomText, CustomTextField, Gap, Screen } from '../../components';
+import { CustomButton, CustomText, CustomTextField, Gap, LogoHeader, Screen } from '../../components';
 import { commonStyles } from '../../theme/commonStyles';
 import { moderateScale, scaleByWidth } from '../../utils/appUtils';
 import { AuthRoutesEnums, HomeRoutesEnums } from '../../routes/route.enums';
 import { Colors } from '../../theme/colors';
 import { authStyles } from './styles';
-import LogoHeader from './LogoHeader';
+
 
 
 type FormValues = {

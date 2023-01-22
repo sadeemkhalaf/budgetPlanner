@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {scaleByWidth} from '../../utils/appUtils';
+import {scaleByHeight, scaleByWidth} from '../../utils/appUtils';
 
 export const authStyles = StyleSheet.create({
   absoluteIcon: {
@@ -8,5 +8,6 @@ export const authStyles = StyleSheet.create({
   },
   headerLogo: {
     width: scaleByWidth(50),
+    height: scaleByHeight(30),
   },
 });

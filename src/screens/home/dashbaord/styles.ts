@@ -5,7 +5,7 @@ import {moderateScale, scaleByWidth} from '../../../utils/appUtils';
 export const styles = StyleSheet.create({
   absoluteIcon: {
     position: 'absolute',
-    right: moderateScale(12),
+    right: moderateScale(32),
     zIndex: 1000,
   },
   searchbox: {

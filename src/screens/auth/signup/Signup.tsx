@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import { t } from 'i18next';
 import { useForm } from 'react-hook-form';
 import Icon from 'react-native-vector-icons/Feather';
-import { CustomText, Gap, CustomButton, Screen } from '../../../components';
+import { CustomText, Gap, CustomButton, Screen, LogoHeader } from '../../../components';
 import { AuthRoutesEnums } from '../../../routes/route.enums';
 import { scaleByWidth, moderateScale } from '../../../utils/appUtils';
 import { ConrolledField } from './controlledField/ControlledField';
@@ -12,8 +12,6 @@ import { Colors } from '../../../theme/colors';
 import { FormValues } from './controlledField/form.type';
 import { commonStyles } from '../../../theme/commonStyles';
 import { authStyles } from '../styles';
-import LogoHeader from '../LogoHeader';
-
 
 const Signup: FC = () => {
   const navigate = useNavigation<any>();
@@ -28,6 +26,7 @@ const Signup: FC = () => {
       confirmPassword: '',
     }
   });
+
   const onSubmit = (data: FormValues) => {
     handleSignup();
   };
