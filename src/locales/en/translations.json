@@ -18,9 +18,16 @@
     "dashboard": "Dashboard",
     "more": "More",
     "expenses": "Expenses",
-    "jod": "{{amount}} JOD"
+    "jod": "{{amount}} JOD",
+    "search": "Search"
   },
-  "More": {},
+  "More": {
+    "hello": "Hello,",
+    "contact-details": "Contact Details",
+    "settings": "Settings",
+    "language": "Language",
+    "logout": "Logout"
+  },
   "Errors": {},
   "ExpensesTypes": {
     "shopping": "Shopping",

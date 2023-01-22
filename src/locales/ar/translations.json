@@ -18,23 +18,30 @@
     "dashboard": "Dashboard",
     "expenses": "المصروفات",
     "more": "المزيد",
-    "jod": "{{amount}} د.أ"
+    "jod": "{{amount}} د.أ",
+    "search": "Search"
   },
-  "More": {},
+  "More": {
+    "hello": "مرحبًا،",
+    "contact-details": "تفاصيل الاتصال",
+    "settings": "الإعدادات",
+    "language": "اللغة",
+    "logout": "تسجيل الخروج"
+  },
   "Errors": {},
   "ExpensesTypes": {
-    "shopping": "shopping",
-    "groceries": "groceries",
-    "utilities": "utilities",
-    "medical": "medical",
-    "donations": "donations",
-    "transportations": "transportations",
-    "rent": "rent",
-    "subscriptions": "subscriptions",
-    "credit-card": "credit card",
-    "vacation": "vacation",
-    "personal-care": "personal care",
+    "shopping": "تسوق",
+    "groceries": "تموينات",
+    "utilities": "فواتير وخدمات",
+    "medical": "احتياجات طبية",
+    "donations": "تبرعات",
+    "transportations": "وسائل النقل",
+    "rent": "إيجار",
+    "subscriptions": "اشتراك",
+    "credit-card": "بطاقة ائتمانية",
+    "vacation": "إجازة",
+    "personal-care": "عناية شخصية",
     "outing": "outing",
-    "other": "other"
+    "other": "غير مصنف"
   }
 }
