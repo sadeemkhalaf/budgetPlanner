@@ -1,4 +1,4 @@
-import React, { FC, Fragment, useCallback, useEffect, useState } from 'react'
+import React, { FC, Fragment, useCallback, useLayoutEffect, useState } from 'react'
 import { FlatList, RefreshControl, View } from 'react-native'
 import { useSelector } from 'react-redux';
 import Icon from 'react-native-vector-icons/Feather';
@@ -8,28 +8,21 @@ import { CustomText, CustomTextField, Gap } from '../../../../components'
 import { Colors } from '../../../../theme/colors'
 import { commonStyles } from '../../../../theme/commonStyles'
 import { ExpenseRow } from '../expenseRow/ExpenseRow'
-import { ExpenseDetails, ExpensesListProps } from './expensesList.props'
+import { ExpenseDetails } from './expensesList.props'
 import { formatDateKeyByLang, moderateScale } from '../../../../utils/appUtils';
 import { IRootState } from '../../../../store/storeConfigs';
 import { styles } from '../styles';
 
 
-export const ExpensesList: FC<ExpensesListProps> = ({ expensesList }) => {
-    const { langType } = useSelector((state: IRootState) => state.App)
+export const ExpensesList: FC = () => {
+    const { userExpensesList } = useSelector((state: IRootState) => state.User);
+    const { langType } = useSelector((state: IRootState) => state.App);
+
     const [searchTxt, setSearchTxt] = useState<string>('');
-    const [tempExpensesList, setTempExpensesList] = useState<ExpenseDetails[]>(expensesList);
+    const [tempExpensesList, setTempExpensesList] = useState<ExpenseDetails[]>(userExpensesList);
     const [groupedActivitiesKeys, setGroupedActivitiesKeys] = useState<any>([]);
     const [groupedActivities, setGroupedActivities] = useState<any>([]);
-
-    const [refreshing, setRefreshing] = React.useState(false);
-
-    const onRefresh = React.useCallback(() => {
-        setRefreshing(true);
-        setTimeout(() => {
-            setRefreshing(false);
-        }, 2000);
-    }, []);
-
+    const [refreshing, setRefreshing] = useState(false);
 
     const groupByDate = () => {
         const groupedByDate = _.groupBy(tempExpensesList, (dates) => formatDateKeyByLang(dates?.createdOn, langType))
@@ -40,15 +33,22 @@ export const ExpensesList: FC<ExpensesListProps> = ({ expensesList }) => {
 
     const filteredExpensesList = (text: string) => {
         if (text.length >= 3) {
-            const filtered = expensesList!.filter((item: ExpenseDetails) => {
-                return item?.title.toLowerCase()?.includes(text?.toLowerCase());
+            const filtered = userExpensesList!.filter((item: ExpenseDetails) => {
+                return t(`ExpensesTypes.${item?.title}`).toLowerCase()?.includes(text?.toLowerCase());
             });
-
             setTempExpensesList(filtered);
-        } else setTempExpensesList(expensesList)
-
+        } else setTempExpensesList(userExpensesList)
         groupByDate();
     };
+
+    const onRefresh = useCallback(() => {
+        setRefreshing(true);
+        setTempExpensesList(userExpensesList)
+        groupByDate();
+        setTimeout(() => {
+            setRefreshing(false);
+        }, 2000);
+    }, []);
 
     const renderSearchInput = useCallback(() => {
         const handleSearch = (text: string) => {
@@ -58,9 +58,8 @@ export const ExpensesList: FC<ExpensesListProps> = ({ expensesList }) => {
 
         return (
             <CustomTextField
-                clearButtonMode={'while-editing'}
                 placeholder={t('Dashboard.search')!}
-                inputStyle={{ borderBottomWidth: 0 }}
+                inputStyle={{ borderBottomWidth: 0, textAlign: 'left' }}
                 style={[commonStyles.flex1, styles.searchbox]}
                 value={searchTxt}
                 onChangeText={handleSearch} />
@@ -68,16 +67,14 @@ export const ExpensesList: FC<ExpensesListProps> = ({ expensesList }) => {
     }, [searchTxt, filteredExpensesList]);
 
 
-    useEffect(() => {
-        // on mounted
-        setTempExpensesList(expensesList)
+    useLayoutEffect(() => {
+        setTempExpensesList(userExpensesList)
         groupByDate();
-
-    }, [expensesList, tempExpensesList])
+    }, [userExpensesList, refreshing])
 
     return (
         <View style={[commonStyles.flex1]}>
-            <View style={[commonStyles.flex, commonStyles.row]}>
+            <View style={[commonStyles.flex, commonStyles.row, { direction: 'ltr' }]}>
                 <Icon
                     name={'search'}
                     size={moderateScale(20)}
@@ -109,24 +106,6 @@ export const ExpensesList: FC<ExpensesListProps> = ({ expensesList }) => {
                 }}
                 keyExtractor={item => item}
             />
-
-            {/* {groupedActivitiesKeys.length > 0 ? groupedActivitiesKeys?.map((key: string, index: number) => {
-                const totalSpendings = groupedActivities[key].reduce((accumulator: number, currentValue: ExpenseDetails) => accumulator + currentValue?.amount, 0);
-                return (<Fragment key={index}>
-                    <View style={[commonStyles.flex, commonStyles.row, commonStyles.spaceBetween]}>
-                        <CustomText text={key} preset={'bold'} />
-                        <CustomText
-                            // text={'6 JOD'}
-                            text={t('Dashboard.jod', { amount: totalSpendings })!}
-                            style={{ color: Colors.purple }} preset={'bold'} />
-                    </View>
-                    <Gap type='col' gapValue={16} />
-                    {groupedActivities[key]?.map((activity: any, key: number) => (
-                        <ExpenseRow key={key} expenseDetail={activity} />
-                    ))}
-                    <Gap type={'col'} gapValue={24} />
-                </Fragment>)
-            }) : null} */}
         </View>
     )
 }

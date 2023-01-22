@@ -19,7 +19,7 @@ export interface ISetUserDetails {
 
 export interface ISetUserExpenses {
   type: UserActionsType.SET_USER_EXPENSES;
-  payload: ExpenseDetails[];
+  payload: ExpenseDetails;
 }
 
 export type AppAction = IChangeLanguageType;

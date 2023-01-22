@@ -1,38 +1,27 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useState } from 'react';
 import { TouchableOpacity, View } from 'react-native';
+import { useDispatch } from 'react-redux';
 import { t } from 'i18next';
 import Icon from 'react-native-vector-icons/Feather';
-import { useForm } from 'react-hook-form';
 import { CustomPopupModal, CustomText, Gap, LogoHeader, Screen } from '../../../components';
-import { moderateScale, scaleByHeight, scaleByWidth } from '../../../utils/appUtils';
+import { scaleByHeight, scaleByWidth } from '../../../utils/appUtils';
 import { ExpensesList } from './expensesList/ExpensesList';
-import { ExpenseDetails, testData } from './expensesList/expensesList.props';
+import { ExpenseDetails } from './expensesList/expensesList.props';
 import { commonStyles } from '../../../theme/commonStyles';
 import { Colors } from '../../../theme/colors';
-import { ExpenseEnums } from './expenseRow/expense.type';
+import { AddNewModalContent } from './AddNewModalContent';
+import { setUserExpenses } from '../../../store/actions/userActions';
 
 const Dashboard: FC = () => {
-  const [expensesList, setExpensesList] = useState<ExpenseDetails[]>([]);
+  const dispatch = useDispatch();
   const [expensesModalVisible, setExpensesModalVisible] = useState<boolean>(false);
 
-  const { control, handleSubmit, formState: { errors }, getValues } = useForm<ExpenseDetails>({
-    defaultValues: {
-      amount: 0,
-      createdOn: new Date().toISOString(),
-      title: ExpenseEnums.OTHER
+  const onSubmitAddNew = (data: ExpenseDetails) => {
+    if (data.amount > 0 && data.title.length) {
+      dispatch(setUserExpenses({ ...data, id: (Math.random() * 900).toString() }));
+      setExpensesModalVisible(false);
     }
-  });
-
-  const handleCreateNew = () => {}
-
-  const onSubmit = (data: ExpenseDetails) => {
-    handleCreateNew();
   };
-
-
-  useEffect(() => {
-    setExpensesList(testData);
-  }, [])
 
   return (
     <Screen
@@ -46,18 +35,20 @@ const Dashboard: FC = () => {
       <View style={[commonStyles.flex, commonStyles.row, commonStyles.spaceBetween]}>
         <CustomText text={t('Dashboard.expenses')!} preset={'headerBold'} />
         <TouchableOpacity style={[commonStyles.flex, commonStyles.row]} onPress={() => setExpensesModalVisible(true)}>
-          <CustomText text={'New'} preset={'bold'} style={{ color: Colors.primary }} />
+          <CustomText text={t('Dashboard.new')!} preset={'bold'} style={{ color: Colors.primary }} />
           <Icon name={'plus'} color={Colors.primary} />
         </TouchableOpacity>
       </View>
       <Gap type={'col'} gapValue={16} />
-      <ExpensesList expensesList={expensesList} />
 
-      {/* type selection */}
-      <CustomPopupModal height={scaleByHeight(340)} visible={expensesModalVisible} onModalClose={() => setExpensesModalVisible(false)}>
-        <View style={[commonStyles.flex, { padding: moderateScale(24) }]}>
-          <CustomText text={t('Dashboard.add-new')!} preset={'subheaderBold'} style={{ color: Colors.black }} />
-        </View>
+      <ExpensesList />
+
+      {/* Add New modal */}
+      <CustomPopupModal
+        height={scaleByHeight(340)}
+        visible={expensesModalVisible}
+        onModalClose={() => setExpensesModalVisible(false)}>
+        <AddNewModalContent onSubmitAddNew={onSubmitAddNew} />
       </CustomPopupModal>
     </Screen>
   );

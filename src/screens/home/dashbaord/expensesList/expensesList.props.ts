@@ -47,5 +47,5 @@ export const testData: ExpenseDetails[] = [
 ];
 
 export interface ExpensesListProps {
-  expensesList: ExpenseDetails[];
+  userExpensesList?: ExpenseDetails[];
 }

@@ -8,6 +8,13 @@ export const styles = StyleSheet.create({
     right: moderateScale(32),
     zIndex: 1000,
   },
+
+  absoluteIconRtl: {
+    position: 'absolute',
+    left: moderateScale(32),
+    zIndex: 1000,
+  },
+
   searchbox: {
     backgroundColor: Colors.layout,
     borderRadius: moderateScale(8),

@@ -23,11 +23,18 @@ const userReducer = (
         ...State,
         userDetails: {...action.payload},
       };
-    case UserActionsType.SET_USER_EXPENSES:
+    case UserActionsType.SET_USER_EXPENSES: {
+      console.log(
+        'State.userExpensesList, action.payload: ',
+        State.userExpensesList,
+        action.payload,
+      );
+
       return {
         ...State,
-        userExpensesList: [...action.payload],
+        userExpensesList: [...State.userExpensesList, action.payload],
       };
+    }
     default:
       return State;
   }

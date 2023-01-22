@@ -22,6 +22,7 @@ const More = () => {
       <CustomText text={'Sadeem Khalaf'} preset={'header'} style={{ color: Colors.black }} />
       <Gap type={'col'} gapValue={32} />
 
+      {/* personal contact details */}
       <View style={[styles.detailsBox]}>
         <CustomText text={t('More.contact-details')!} preset={'subheaderBold'} style={{ color: Colors.black }} />
         <Gap type={'col'} gapValue={24} />
@@ -33,9 +34,6 @@ const More = () => {
       </View>
 
       {/* settings */}
-      <Gap type={'col'} gapValue={32} />
-      <CustomText text={t('More.settings')!} preset={'subheaderBold'} style={{ color: Colors.black }} />
-      <Gap type={'col'} gapValue={24} />
       <SettingsList />
 
     </Screen>

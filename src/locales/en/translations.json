@@ -20,7 +20,10 @@
     "expenses": "Expenses",
     "jod": "{{amount}} JOD",
     "search": "Search",
-    "add-new": "Add New"
+    "add-new": "Add New",
+    "select-type": "Select type",
+    "amount": "Amount",
+    "new": "New"
   },
   "More": {
     "hello": "Hello,",

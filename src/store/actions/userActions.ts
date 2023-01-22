@@ -21,9 +21,9 @@ export const setUserDetails = (userDetails: IUserDetails) => {
   };
 };
 
-export const setUserExpenses = (userExpenses: ExpenseDetails[]) => {
+export const setUserExpenses = (userExpenses: ExpenseDetails) => {
   return {
-    type: UserActionsType.SET_TOKEN,
-    payload: [...userExpenses],
+    type: UserActionsType.SET_USER_EXPENSES,
+    payload: userExpenses,
   };
 };

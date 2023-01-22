@@ -14,6 +14,9 @@ export const commonStyles = StyleSheet.create({
   w100: {
     width: '100%',
   },
+  w75: {
+    width: '75%',
+  },
   row: {
     flexDirection: 'row',
     alignItems: 'center',

@@ -28,9 +28,11 @@ export const SettingsList: FC = () => {
         setLanguageModalVisible(false);
     }
 
-
     return (
         <View>
+            <Gap type={'col'} gapValue={32} />
+            <CustomText text={t('More.settings')!} preset={'subheaderBold'} style={{ color: Colors.black }} />
+            <Gap type={'col'} gapValue={24} />
             <TouchableOpacity
                 style={[commonStyles.row, { borderBottomWidth: 1, paddingVertical: scaleByHeight(16), borderBottomColor: Colors.lightGrey }]}
                 onPress={handleLanguageModalVisible}
@@ -50,7 +52,7 @@ export const SettingsList: FC = () => {
             <CustomPopupModal height={scaleByHeight(300)} visible={languageModalVisible} onModalClose={() => setLanguageModalVisible(false)}>
                 <View style={[commonStyles.flex, { padding: moderateScale(24) }, commonStyles.w100, commonStyles.flex1, commonStyles.spaceBetween]}>
                     <View>
-                        <CustomText text={t('More.select-language')!} preset={'subheaderBold'} style={{ color: Colors.black }} />
+                        <CustomText text={t('More.select-language')!} preset={'subheaderBold'} style={{ color: Colors.black, textAlign: 'center' }} />
                         <Gap type={'col'} gapValue={32} />
                         <TouchableOpacity style={[commonStyles.row, styles.bottomBorder, commonStyles.w100]} onPress={() => handleUpdateLanguage('en')}>
                             <CustomText text={t('More.en')!} preset={'default'} style={{ color: langType === 'en' ? Colors.primary : Colors.black }} />
