@@ -3,6 +3,7 @@ import { View, TouchableOpacity } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux';
 import { t } from 'i18next'
 import Icon from 'react-native-vector-icons/Entypo';
+import { StackActions, useNavigation } from '@react-navigation/native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import RnRestart from 'react-native-restart';
 import { Gap, CustomText, CustomButton, CustomPopupModal } from '../../../components'
@@ -11,11 +12,14 @@ import { Colors } from '../../../theme/colors'
 import { changeLangType } from '../../../store/actions/appActions';
 import { setToken, setUserDetails } from '../../../store/actions/userActions';
 import { IRootState } from '../../../store/storeConfigs';
+import { AuthRoutesEnums } from '../../../routes/route.enums';
 import { commonStyles } from '../../../theme/commonStyles'
 import { styles } from './styles';
 
 export const SettingsList: FC = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigation();
+
     const { langType } = useSelector((state: IRootState) => state.App);
     const [languageModalVisible, setLanguageModalVisible] = useState<boolean>(false);
 
@@ -29,10 +33,12 @@ export const SettingsList: FC = () => {
         setLanguageModalVisible(false);
     }
 
-
     const handleClearAndLogout = () => {
-        dispatch(setUserDetails({}));
-        dispatch(setToken(''));
+        setTimeout(() => {
+            dispatch(setUserDetails({}));
+            dispatch(setToken(''));
+        }, 150);
+        navigate.dispatch(StackActions.replace(AuthRoutesEnums.AuthStack))
     }
 
     return (

@@ -33,8 +33,10 @@ const Signup: FC = () => {
   });
 
   const onSubmitForm = (data: FormValues) => {
-    dispatch(persistUserRegistration({ ...data }))
-    navigate.navigate(AuthRoutesEnums.SignupDone)
+    if (getValues('confirmPassword').match(getValues('password'))) {
+      dispatch(persistUserRegistration({ ...data }))
+      navigate.navigate(AuthRoutesEnums.SignupDone)
+    }
   };
 
 
@@ -75,7 +77,7 @@ const Signup: FC = () => {
               dispatch(persistUserRegistration({ ...tempUserDetails, mobileNumber: value }))
             }} />
           {errors.mobileNumber && <CustomText preset={'calloutLabel'} style={{ color: Colors.red }} text={t("Errors.required-field")!} />}
-          <ConrolledField control={control} name={'email'} rules={{ required: true }} placeholder={t('Auth.email')!}
+          <ConrolledField control={control} name={'email'} rules={{ required: true, pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i }} placeholder={t('Auth.email')!}
             persistTempUser={(value) => {
               dispatch(persistUserRegistration({ ...tempUserDetails, email: value }))
             }} />
