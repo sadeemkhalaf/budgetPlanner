@@ -2,7 +2,7 @@ import {TextInputProps} from 'react-native';
 import {UseControllerProps} from 'react-hook-form';
 
 export type FormValues = {
-  fullname: string;
+  fullName: string;
   mobileNumber: string;
   email: string;
   password: string;
@@ -16,4 +16,5 @@ export interface ControlledFieldProps
   placeholder?: string;
   name: keyof FormValues;
   defaultValue?: string;
+  persistTempUser?: (value: any) => void;
 }

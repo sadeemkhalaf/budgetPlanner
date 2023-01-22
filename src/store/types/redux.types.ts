@@ -1,11 +1,15 @@
-import {ExpenseDetails} from '../../screens/home/dashbaord/expensesList/expensesList.props';
-import {IUserDetails} from '../../utils/types';
+import {
+  ExpenseDetails,
+  ITempUserDetails,
+  IUserDetails,
+} from '../../utils/types';
 
-export interface IinitialStateApp {
+export interface InitialStateApp {
   langType: 'en' | 'ar';
+  tempUserDetails: ITempUserDetails;
 }
 
-export interface IinitialStateUser {
+export interface InitialStateUser {
   userDetails: IUserDetails;
   userExpensesList: ExpenseDetails[];
   token: string;

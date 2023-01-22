@@ -13,7 +13,6 @@ import { IRootState } from '../store/storeConfigs';
 const AppStack = () => {
   const Stack = createNativeStackNavigator();
   const { token } = useSelector((state: IRootState) => state.User);
-
   const { langType } = useSelector((state: IRootState) => state.App);
 
   const handleUpdateLayout = () => {

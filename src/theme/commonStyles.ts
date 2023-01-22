@@ -36,4 +36,7 @@ export const commonStyles = StyleSheet.create({
   alignItems: {
     alignItems: 'center',
   },
+  alignStart: {
+    alignItems: 'flex-start',
+  },
 });

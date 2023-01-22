@@ -1,20 +1,26 @@
-import {AppActions} from '../actions/appActions';
 import {AppAction} from '../types/actions.type';
-import {IinitialStateApp} from '../types/redux.types';
+import {AppActionsType} from '../types/redux.enums';
+import {InitialStateApp} from '../types/redux.types';
 
-const initialState: IinitialStateApp = {
+const initialState: InitialStateApp | undefined = {
   langType: 'en',
+  tempUserDetails: {},
 };
 
 const appReducer = (
-  State: IinitialStateApp = initialState,
+  State: InitialStateApp = initialState,
   action: AppAction,
 ) => {
   switch (action.type) {
-    case AppActions.CHANGE_LANG_TYPE:
+    case AppActionsType.CHANGE_LANG_TYPE:
       return {
         ...State,
         langType: action.payload,
+      };
+    case AppActionsType.TEMP_USER_REGISTRATION:
+      return {
+        ...State,
+        tempUserDetails: {...action.payload},
       };
     default:
       return State;

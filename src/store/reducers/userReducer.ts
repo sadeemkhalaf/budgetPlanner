@@ -1,15 +1,15 @@
 import {UserAction} from '../types/actions.type';
 import {UserActionsType} from '../types/redux.enums';
-import {IinitialStateUser} from '../types/redux.types';
+import {InitialStateUser} from '../types/redux.types';
 
-const initialState: IinitialStateUser = {
+const initialState: InitialStateUser | undefined = {
   token: '',
   userDetails: {},
   userExpensesList: [],
 };
 
 const userReducer = (
-  State: IinitialStateUser = initialState,
+  State: InitialStateUser = initialState,
   action: UserAction,
 ) => {
   switch (action.type) {
@@ -24,12 +24,6 @@ const userReducer = (
         userDetails: {...action.payload},
       };
     case UserActionsType.SET_USER_EXPENSES: {
-      console.log(
-        'State.userExpensesList, action.payload: ',
-        State.userExpensesList,
-        action.payload,
-      );
-
       return {
         ...State,
         userExpensesList: [...State.userExpensesList, action.payload],

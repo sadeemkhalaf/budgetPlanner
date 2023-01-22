@@ -1,5 +1,4 @@
-import {ExpenseDetails} from '../../screens/home/dashbaord/expensesList/expensesList.props';
-import {IUserDetails} from '../../utils/types';
+import {ExpenseDetails, IUserDetails} from '../../utils/types';
 import {UserActionsType} from '../types/redux.enums';
 
 export const AppActions = {
@@ -16,7 +15,7 @@ export const setToken = (token: string) => {
 
 export const setUserDetails = (userDetails: IUserDetails) => {
   return {
-    type: UserActionsType.SET_TOKEN,
+    type: UserActionsType.USER_DETAILS,
     payload: userDetails,
   };
 };

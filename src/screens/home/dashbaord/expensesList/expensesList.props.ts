@@ -1,11 +1,4 @@
-import {ExpenseEnums} from '../expenseRow/expense.type';
-
-export interface ExpenseDetails {
-  id?: string;
-  title: ExpenseEnums;
-  amount: number;
-  createdOn: string;
-}
+import {ExpenseDetails, ExpenseEnums} from '../../../../utils/types';
 
 export const testData: ExpenseDetails[] = [
   {
@@ -45,7 +38,3 @@ export const testData: ExpenseDetails[] = [
     title: ExpenseEnums.OTHER,
   },
 ];
-
-export interface ExpensesListProps {
-  userExpensesList?: ExpenseDetails[];
-}

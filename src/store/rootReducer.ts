@@ -3,6 +3,6 @@ import appReducer from './reducers/appReducer';
 import userReducer from './reducers/userReducer';
 
 export const RootReducer = combineReducers({
-  App: appReducer,
   User: userReducer,
+  App: appReducer,
 });

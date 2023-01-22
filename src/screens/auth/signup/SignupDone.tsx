@@ -8,12 +8,35 @@ import { commonStyles } from '../../../theme/commonStyles';
 import { moderateScale, scaleByWidth } from '../../../utils/appUtils';
 import { Colors } from '../../../theme/colors';
 import { HomeRoutesEnums } from '../../../routes/route.enums';
+import { useDispatch, useSelector } from 'react-redux';
+import { IRootState } from '../../../store/storeConfigs';
+import { InitialStateApp } from '../../../store/types/redux.types';
+import { setToken, setUserDetails } from '../../../store/actions/userActions';
+import { SECRET_KEY } from '../../../utils/constants';
+import { persistUserRegistration } from '../../../store/actions/appActions';
 
 const SignupDone = () => {
   const navigate = useNavigation();
+  const dispatch = useDispatch();
+  const { tempUserDetails } = useSelector((state: IRootState) => state.App as InitialStateApp);
 
   const handleNavigateToDashboard = () => {
-    navigate.dispatch(StackActions.replace(HomeRoutesEnums.Home, { screen: HomeRoutesEnums.Dashboard }))
+    handleSignIn();
+    navigate.dispatch(StackActions.replace(HomeRoutesEnums.Home, { screen: HomeRoutesEnums.Dashboard }));
+  }
+
+  const handleSignIn = () => {
+    dispatch(setToken(SECRET_KEY));
+    dispatch(setUserDetails({
+      createdOn: new Date().toISOString(),
+      email: tempUserDetails?.email,
+      fullName: tempUserDetails?.fullName,
+      mobileNumber: tempUserDetails?.mobileNumber,
+      userID: String(Math.random() * 999)
+    }))
+    setTimeout(() => {
+      dispatch(persistUserRegistration({}));
+    }, 150);
   }
 
   return (

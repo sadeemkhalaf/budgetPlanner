@@ -1,17 +1,18 @@
-import { View, TouchableOpacity } from 'react-native'
 import React, { FC, useState } from 'react'
+import { View, TouchableOpacity } from 'react-native'
+import { useDispatch, useSelector } from 'react-redux';
 import { t } from 'i18next'
 import Icon from 'react-native-vector-icons/Entypo';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import RnRestart from 'react-native-restart';
 import { Gap, CustomText, CustomButton, CustomPopupModal } from '../../../components'
-import { commonStyles } from '../../../theme/commonStyles'
 import { scaleByHeight, moderateScale } from '../../../utils/appUtils'
 import { Colors } from '../../../theme/colors'
-import { styles } from './styles';
-import { useDispatch, useSelector } from 'react-redux';
 import { changeLangType } from '../../../store/actions/appActions';
+import { setToken, setUserDetails } from '../../../store/actions/userActions';
 import { IRootState } from '../../../store/storeConfigs';
+import { commonStyles } from '../../../theme/commonStyles'
+import { styles } from './styles';
 
 export const SettingsList: FC = () => {
     const dispatch = useDispatch();
@@ -24,14 +25,20 @@ export const SettingsList: FC = () => {
         dispatch(changeLangType(langSelected))
         setTimeout(() => {
             RnRestart.Restart();
-        }, 150);
+        }, 250);
         setLanguageModalVisible(false);
+    }
+
+
+    const handleClearAndLogout = () => {
+        dispatch(setUserDetails({}));
+        dispatch(setToken(''));
     }
 
     return (
         <View>
             <Gap type={'col'} gapValue={32} />
-            <CustomText text={t('More.settings')!} preset={'subheaderBold'} style={{ color: Colors.black }} />
+            <CustomText text={t('More.settings')!} preset={'subheaderBold'} style={[{ color: Colors.black }, langType === 'ar' && { textAlign: 'left' }]} />
             <Gap type={'col'} gapValue={24} />
             <TouchableOpacity
                 style={[commonStyles.row, { borderBottomWidth: 1, paddingVertical: scaleByHeight(16), borderBottomColor: Colors.lightGrey }]}
@@ -42,12 +49,13 @@ export const SettingsList: FC = () => {
                 <Gap type={'row'} gapValue={16} />
                 <CustomText text={t('More.language')!} preset={'default'} style={{ color: Colors.black }} />
             </TouchableOpacity>
-            <TouchableOpacity style={[commonStyles.row, { paddingVertical: scaleByHeight(8) }]}>
+            <TouchableOpacity style={[commonStyles.row, { paddingVertical: scaleByHeight(8) }]} onPress={handleClearAndLogout}>
                 <FeatherIcon name={'log-out'} size={moderateScale(20)}
                     color={Colors.grey} />
                 <Gap type={'row'} gapValue={16} />
                 <CustomText text={t('More.logout')!} preset={'default'} style={{ color: Colors.black }} />
             </TouchableOpacity>
+
             {/* popup */}
             <CustomPopupModal height={scaleByHeight(300)} visible={languageModalVisible} onModalClose={() => setLanguageModalVisible(false)}>
                 <View style={[commonStyles.flex, { padding: moderateScale(24) }, commonStyles.w100, commonStyles.flex1, commonStyles.spaceBetween]}>

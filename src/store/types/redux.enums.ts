@@ -1,5 +1,6 @@
 export enum AppActionsType {
   CHANGE_LANG_TYPE = 'CHANGE_LANG_TYPE',
+  TEMP_USER_REGISTRATION = 'TEMP_USER_REGISTRATION',
 }
 
 export enum UserActionsType {

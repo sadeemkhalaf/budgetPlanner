@@ -1,9 +1,8 @@
-import {Action, CombinedState, compose, createStore, Reducer} from 'redux';
+import {compose, createStore} from 'redux';
 import {persistStore, persistReducer} from 'redux-persist';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
 import {RootReducer} from './rootReducer';
-import {IinitialStateApp, IinitialStateUser} from './types/redux.types';
 
 declare global {
   interface Window {
@@ -16,7 +15,7 @@ const persistConfig = {
   key: 'budgetStore',
   stateReconciler: autoMergeLevel2,
   storage: AsyncStorage,
-  version: 2,
+  version: 3,
 };
 
 const composeWithDevTools = compose(
@@ -26,13 +25,8 @@ const composeWithDevTools = compose(
 );
 
 type rootState = ReturnType<typeof RootReducer>;
-const persistedReducer = persistReducer<rootState>(
-  persistConfig,
-  RootReducer as Reducer<
-    CombinedState<{App: IinitialStateApp; User: IinitialStateUser}>,
-    Action<any>
-  >,
-);
+//@ts-ignore
+const persistedReducer = persistReducer<rootState>(persistConfig, RootReducer);
 
 export const reduxStore = createStore(persistedReducer, composeWithDevTools);
 

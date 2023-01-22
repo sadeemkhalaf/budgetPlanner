@@ -4,22 +4,7 @@ import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import IonIcon from 'react-native-vector-icons/Ionicons';
 import { moderateScale } from '../../../../utils/appUtils';
 import { Colors } from '../../../../theme/colors';
-
-export enum ExpenseEnums {
-  SHOPPING = 'shopping',
-  GROCERIES = 'groceries',
-  UTILITIES = 'utilities',
-  MEDICAL = 'medical',
-  DONATIONS = 'donations',
-  TRANSPORTATIONS = 'transportations',
-  RENT = 'rent',
-  SUBSCRIPTIONS = 'subscriptions',
-  CREDIT = 'credit-card',
-  VACATION = 'vacation',
-  PERSONAL_CARE = 'personal-care',
-  OUTING = 'outing',
-  OTHER = 'other'
-}
+import { ExpenseEnums } from '../../../../utils/types';
 
 export const getIconByExpenseType = (expenseType: ExpenseEnums) => {
   switch (expenseType) {

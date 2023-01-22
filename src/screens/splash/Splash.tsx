@@ -15,7 +15,7 @@ const Splash: FC = () => {
   const handleNavigation = useCallback(() => {
     try {
       // TODO: fix after you're done
-      if (!token.length) {
+      if (token.length) {
         navigation.navigate(HomeRoutesEnums.Home, {
           screen: HomeRoutesEnums.Dashboard,
         });

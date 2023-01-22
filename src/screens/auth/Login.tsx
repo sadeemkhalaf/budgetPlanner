@@ -5,13 +5,11 @@ import Icon from 'react-native-vector-icons/Feather';
 import { useNavigation } from '@react-navigation/native';
 import { useForm, Controller } from 'react-hook-form';
 import { CustomButton, CustomText, CustomTextField, Gap, LogoHeader, Screen } from '../../components';
-import { commonStyles } from '../../theme/commonStyles';
 import { moderateScale, scaleByWidth } from '../../utils/appUtils';
 import { AuthRoutesEnums, HomeRoutesEnums } from '../../routes/route.enums';
 import { Colors } from '../../theme/colors';
+import { commonStyles } from '../../theme/commonStyles';
 import { authStyles } from './styles';
-
-
 
 type FormValues = {
   email: string;
@@ -44,7 +42,7 @@ const Login: FC = () => {
 
   return (
     <Screen
-      unsafe
+      unsafe={false}
       preset={'full'}
       style={{ paddingHorizontal: scaleByWidth(30) }}
     >
@@ -65,7 +63,7 @@ const Login: FC = () => {
           )}
           name={"email"}
         />
-        {errors.email && <CustomText preset={'calloutLabel'} style={{ color: Colors.red }} text={'Email is required'} />}
+        {errors.email && <CustomText preset={'calloutLabel'} style={{ color: Colors.red }} text={t("Errors.required-field")!} />}
 
         <View style={[commonStyles.flex, commonStyles.row]}>
           <Controller
@@ -91,7 +89,7 @@ const Login: FC = () => {
             style={[authStyles.absoluteIcon]}
             onPress={togglePasswordVisibility} />
         </View>
-        {errors.password && <CustomText preset={'calloutLabel'} style={{ color: Colors.red }} text={'This field min length is 8 characters'} />}
+        {errors.password && <CustomText preset={'calloutLabel'} style={{ color: Colors.red }} text={t("Errors.min-length", { count: 8 })!} />}
 
       </View>
       <CustomButton text={t('Auth.login')!} onPress={handleSubmit(onSubmit)} />
