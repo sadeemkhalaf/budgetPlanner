@@ -27,12 +27,12 @@ const Login: FC = () => {
   });
   const onSubmit = (data: FormValues) => {
     console.log('errors: ', errors);
-    handleLogin();
+    // handleLogin();
   };
 
-  const handleLogin = () => {
-    navigate.navigate(HomeRoutesEnums.Home)
-  }
+  // const handleLogin = () => {
+  //   navigate.navigate(HomeRoutesEnums.Home)
+  // }
 
   const navigatSignup = () => {
     navigate.navigate(AuthRoutesEnums.Signup)
