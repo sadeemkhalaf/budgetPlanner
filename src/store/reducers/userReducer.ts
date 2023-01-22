@@ -5,6 +5,7 @@ import {IinitialStateUser} from '../types/redux.types';
 const initialState: IinitialStateUser = {
   token: '',
   userDetails: {},
+  userExpensesList: [],
 };
 
 const userReducer = (
@@ -21,6 +22,11 @@ const userReducer = (
       return {
         ...State,
         userDetails: {...action.payload},
+      };
+    case UserActionsType.SET_USER_EXPENSES:
+      return {
+        ...State,
+        userExpensesList: [...action.payload],
       };
     default:
       return State;

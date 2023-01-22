@@ -1,3 +1,4 @@
+import {ExpenseDetails} from '../../screens/home/dashbaord/expensesList/expensesList.props';
 import {IUserDetails} from '../../utils/types';
 import {UserActionsType} from '../types/redux.enums';
 
@@ -17,5 +18,12 @@ export const setUserDetails = (userDetails: IUserDetails) => {
   return {
     type: UserActionsType.SET_TOKEN,
     payload: userDetails,
+  };
+};
+
+export const setUserExpenses = (userExpenses: ExpenseDetails[]) => {
+  return {
+    type: UserActionsType.SET_TOKEN,
+    payload: [...userExpenses],
   };
 };

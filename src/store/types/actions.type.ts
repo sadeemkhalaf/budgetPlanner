@@ -1,3 +1,4 @@
+import {ExpenseDetails} from '../../screens/home/dashbaord/expensesList/expensesList.props';
 import {IUserDetails} from '../../utils/types';
 import {AppActionsType, UserActionsType} from './redux.enums';
 
@@ -16,5 +17,10 @@ export interface ISetUserDetails {
   payload: IUserDetails;
 }
 
+export interface ISetUserExpenses {
+  type: UserActionsType.SET_USER_EXPENSES;
+  payload: ExpenseDetails[];
+}
+
 export type AppAction = IChangeLanguageType;
-export type UserAction = ISetToken | ISetUserDetails;
+export type UserAction = ISetToken | ISetUserDetails | ISetUserExpenses;
