@@ -37,7 +37,11 @@
     "confirm": "Confirm",
     "close": "Close"
   },
-  "Errors": {},
+  "Errors": {
+    "required-field": "Field is Required",
+    "password-not-match": "Password doesn't match",
+    "min-length": "This field min length is {{count}} characters"
+  },
   "ExpensesTypes": {
     "shopping": "Shopping",
     "groceries": "Groceries",

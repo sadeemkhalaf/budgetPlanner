@@ -37,7 +37,11 @@
     "confirm": "تأكيد",
     "close": "إغلاق"
   },
-  "Errors": {},
+  "Errors": {
+    "required-field": "هذا الحقل مطلوب",
+    "password-not-match": "الرمز السري غير متطابق",
+    "min-length": "الحد الأدنى لطول الحقل {{count}} أحرف"
+  },
   "ExpensesTypes": {
     "shopping": "تسوق",
     "groceries": "تموينات",
