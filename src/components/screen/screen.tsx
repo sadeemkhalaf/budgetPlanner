@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { KeyboardAvoidingView, Platform, ScrollView, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { useSelector } from 'react-redux';
-import { IRootState } from '../../store/storeConfigs';
 import { Colors } from '../../theme/colors';
 import { isNonScrolling, offsets, presets } from './screen.presets';
 import { ScreenProps } from './screen.props';
@@ -10,8 +8,6 @@ import { ScreenProps } from './screen.props';
 const isIos = Platform.OS === 'ios';
 
 function ScreenWithoutScrolling(props: ScreenProps) {
-  const { langType } = useSelector((state: IRootState) => state.App);
-  const isRtl = langType === 'ar' ? true : false;
   const insets = useSafeAreaInsets();
   const preset = props.preset ? presets[props.preset] : presets.fixed;
   const style = props.style || {};
@@ -31,7 +27,6 @@ function ScreenWithoutScrolling(props: ScreenProps) {
       <KeyboardAvoidingView
         style={[
           preset.outer,
-          { direction: isRtl ? 'rtl' : 'ltr' },
           backgroundStyle,
           insetStyle,
         ]}
@@ -46,8 +41,6 @@ function ScreenWithoutScrolling(props: ScreenProps) {
 }
 
 function ScreenWithScrolling(props: ScreenProps) {
-  const { langType } = useSelector((state: IRootState) => state.App);
-  const isRtl = langType === 'ar' ? true : false;
   const insets = useSafeAreaInsets();
   const preset = presets.scroll;
   const style = props.style || {};
@@ -68,7 +61,6 @@ function ScreenWithScrolling(props: ScreenProps) {
       <KeyboardAvoidingView
         style={[
           preset.outer,
-          { direction: isRtl ? 'rtl' : 'ltr' },
           backgroundStyle,
           insetStyle,
         ]}

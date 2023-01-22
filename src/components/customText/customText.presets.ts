@@ -52,6 +52,11 @@ export const CustomTextPresets = {
   headerBold: {...BOLD, fontSize: moderateScale(24)} as TextStyle,
 
   /**
+   * A Large header bold version of the default text.
+   */
+  largeHeaderBold: {...BOLD, fontSize: moderateScale(32)} as TextStyle,
+
+  /**
    * A header bold version of the default text.
    */
   subheaderBold: {...BOLD, fontSize: moderateScale(20)} as TextStyle,

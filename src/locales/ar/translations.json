@@ -15,18 +15,24 @@
     "start": "ابدأ"
   },
   "Dashboard": {
-    "dashboard": "Dashboard",
+    "dashboard": "الرئيسية",
     "expenses": "المصروفات",
     "more": "المزيد",
     "jod": "{{amount}} د.أ",
-    "search": "Search"
+    "search": "ابحث",
+    "add-new": "إضافة"
   },
   "More": {
     "hello": "مرحبًا،",
     "contact-details": "تفاصيل الاتصال",
     "settings": "الإعدادات",
     "language": "اللغة",
-    "logout": "تسجيل الخروج"
+    "logout": "تسجيل الخروج",
+    "select-language": "قم باختيار اللغة",
+    "en": "English",
+    "ar": "العربية",
+    "confirm": "تأكيد",
+    "close": "إغلاق"
   },
   "Errors": {},
   "ExpensesTypes": {

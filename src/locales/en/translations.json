@@ -19,14 +19,20 @@
     "more": "More",
     "expenses": "Expenses",
     "jod": "{{amount}} JOD",
-    "search": "Search"
+    "search": "Search",
+    "add-new": "Add New"
   },
   "More": {
     "hello": "Hello,",
     "contact-details": "Contact Details",
     "settings": "Settings",
     "language": "Language",
-    "logout": "Logout"
+    "select-language": "Select Language",
+    "en": "English",
+    "ar": "Arabic",
+    "logout": "Logout",
+    "confirm": "Confirm",
+    "close": "Close"
   },
   "Errors": {},
   "ExpensesTypes": {
