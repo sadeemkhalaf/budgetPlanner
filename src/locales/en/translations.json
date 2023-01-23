@@ -1,0 +1,61 @@
+{
+  "Auth": {
+    "login": "Login",
+    "signup": "Sign up",
+    "welcome-back": "Welcome back",
+    "email": "Email",
+    "password": "Password",
+    "confirm-password": "Confirm Password",
+    "create-account-title": "Create a new account",
+    "create-account": "Create account",
+    "congratulations": "Congratulations",
+    "account-ready": "You're all setup",
+    "fullname": "Full Name",
+    "mobile": "Mobile Number",
+    "start": "Start"
+  },
+  "Dashboard": {
+    "dashboard": "Dashboard",
+    "more": "More",
+    "expenses": "Expenses",
+    "empty-list-state": "Empty List! Start adding new",
+    "jod": "{{amount}} JOD",
+    "search": "Search",
+    "add-new": "Add New",
+    "select-type": "Select type",
+    "amount": "Amount",
+    "new": "New"
+  },
+  "More": {
+    "hello": "Hello,",
+    "contact-details": "Contact Details",
+    "settings": "Settings",
+    "language": "Language",
+    "select-language": "Select Language",
+    "en": "English",
+    "ar": "Arabic",
+    "logout": "Logout",
+    "confirm": "Confirm",
+    "close": "Close"
+  },
+  "Errors": {
+    "required-field": "Field is Required",
+    "password-not-match": "Password doesn't match",
+    "min-length": "This field min length is {{count}} characters"
+  },
+  "ExpensesTypes": {
+    "shopping": "Shopping",
+    "groceries": "Groceries",
+    "utilities": "Utilitis",
+    "medical": "Medical",
+    "donations": "Donations",
+    "transportations": "Transportations",
+    "rent": "Rent",
+    "subscriptions": "Subscriptions",
+    "credit-card": "Credit card",
+    "vacation": "Vacation",
+    "personal-care": "Personal care",
+    "outing": "Outing",
+    "other": "Other"
+  }
+}

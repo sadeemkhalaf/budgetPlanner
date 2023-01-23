@@ -1,0 +1,61 @@
+{
+  "Auth": {
+    "login": "دخول",
+    "signup": "حساب جديد",
+    "welcome-back": "أهلًا بعودتك",
+    "email": "البريد الالكتروني",
+    "password": "كلمة السر",
+    "confirm-password": "تأكيد كلمة السر",
+    "create-account-title": "قم بإنشاء حسابك",
+    "create-account": "أنشئ حسابك",
+    "congratulations": "مبروك",
+    "account-ready": "تم تجهيز حسابك!",
+    "fullname": "الاسم الكامل",
+    "mobile": "رقم الهاتف المحمول",
+    "start": "ابدأ"
+  },
+  "Dashboard": {
+    "dashboard": "الرئيسية",
+    "expenses": "المصروفات",
+    "empty-list-state": "القائمة فارغة! ابدأ بالإضافة",
+    "more": "المزيد",
+    "jod": "{{amount}} د.أ",
+    "search": "ابحث",
+    "add-new": "إضافة مدفوعات جديدة",
+    "select-type": "قم باختيار النوع",
+    "amount": "القيمة",
+    "new": "جديد"
+  },
+  "More": {
+    "hello": "مرحبًا،",
+    "contact-details": "تفاصيل الاتصال",
+    "settings": "الإعدادات",
+    "language": "اللغة",
+    "logout": "تسجيل الخروج",
+    "select-language": "قم باختيار اللغة",
+    "en": "English",
+    "ar": "العربية",
+    "confirm": "تأكيد",
+    "close": "إغلاق"
+  },
+  "Errors": {
+    "required-field": "هذا الحقل مطلوب",
+    "password-not-match": "الرمز السري غير متطابق",
+    "min-length": "الحد الأدنى لطول الحقل {{count}} أحرف"
+  },
+  "ExpensesTypes": {
+    "shopping": "تسوق",
+    "groceries": "تموينات",
+    "utilities": "فواتير وخدمات",
+    "medical": "احتياجات طبية",
+    "donations": "تبرعات",
+    "transportations": "وسائل النقل",
+    "rent": "إيجار",
+    "subscriptions": "اشتراك",
+    "credit-card": "بطاقة ائتمانية",
+    "vacation": "إجازة",
+    "personal-care": "عناية شخصية",
+    "outing": "outing",
+    "other": "غير مصنف"
+  }
+}
